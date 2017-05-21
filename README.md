@@ -20,18 +20,18 @@ Test case can be run using command:
 ## Api Conventions
 
 ### Json field Naming
-Json field must be passed in snakecases. 
+Json fields should be written in snakecases. 
     
-    For eg: firstRegeistration is written as first_registration
+    For eg: field firstRegistration is written as first_registration
 
 ### Sorting
-To sort, sorting information must be passed using request param as:
+To sort, sorting information can be passed using Request Param as:
 
--> Sorting in `aescending order` can be done as:  
+-> Sorting in `aescending order`  
     
     .../adverts?sort={"first_registration":1}
 
--> Sorting in `descending order` can be done as:  
+-> Sorting in `descending order`  
 
     .../adverts?sort={"first_registration":-1}
 
