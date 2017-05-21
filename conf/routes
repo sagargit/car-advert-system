@@ -1,0 +1,6 @@
+
+POST          /adverts            @controllers.Application.createAdvert
+GET           /adverts            @controllers.Application.getAllAdverts
+GET           /adverts/:id        @controllers.Application.getAdvertById(id: String)
+PUT           /adverts/:id        @controllers.Application.updateCarAdvert(id: String)
+DELETE        /adverts/:id        @controllers.Application.removeAdvert(id: String)

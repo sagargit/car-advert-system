@@ -1,0 +1,9 @@
+{
+  "id": "5921b350530000b6000eb7a2",
+  "title" : "BMW",
+  "fuel": "gasoline",
+  "price":5000,
+  "new": false,
+  "mileage": 26,
+  "first_registration": "2017-02-04"
+}
