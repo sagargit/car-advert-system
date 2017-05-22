@@ -38,14 +38,12 @@ class CarAdvertSpecification extends PlaySpecification with AbstractSpecificatio
     val Some(result) = route(FakeRequest(GET, s"/adverts/$advertId"))
     status(result) must equalTo(OK)
     val resultJson = contentAsJson(result)
-    println(Json.stringify(resultJson.\("id").get))
     Json.stringify(resultJson.\("id").get).stripPrefix("\"").stripSuffix("\"") must_== advertId
 
   }
 
   "Update CarAdvert" in {
     val updateAdvertJson = Json.obj("id" -> advertId, "mileage" -> JsNumber(30))
-    println(updateAdvertJson)
     val Some(result) = route(FakeRequest(PUT, s"/adverts/$advertId").withJsonBody(updateAdvertJson))
     val Some(result1) = route(FakeRequest(GET, s"/adverts/$advertId"))
     val resultJson1 = contentAsJson(result1)
