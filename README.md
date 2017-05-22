@@ -6,7 +6,7 @@ The project is developed using `play 2.4` along with scala `2.11.8`.
 `MongoDB 3.4` is used as a backend database. Test case is written using `specs2`.
 
 ## Requred Configuration
-Along with `jdk`, `scala`,`sbt` and `play`, `mongo` should be installed and `mongod` service should be started. MongoDB can be installed from here: https://docs.mongodb.com/manual/installation/
+Along with `jdk`, `scala`,`sbt` and `play`, `mongo` should be installed and `mongod` service should be started.
 
 ## Running The Project
 Project can be run using command:
