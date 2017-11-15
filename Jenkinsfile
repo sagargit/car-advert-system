@@ -3,6 +3,7 @@ node {
         stage ('Clean') {
             sh "cd /home/prod-user/"
             sh "echo 'inside home directory............'"
+            sh "ls -l"
             sh "cd car-advert-system"
         	sh "sbt clean"
         }
