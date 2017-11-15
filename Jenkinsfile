@@ -1,6 +1,7 @@
 node {
     try {
         stage ('Clean') {
+            sh "cd ~"
             sh "cd car-advert-system"
         	sh "sbt clean"
         }
