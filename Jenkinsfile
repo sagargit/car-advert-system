@@ -1,31 +1,21 @@
 node {
-    try {
-        stage ('Clean') {
-            sh "cd /home/prod-user/"
-            sh "echo 'inside home directory............'"
-            sh "ls -l"
-            sh "cd car-advert-system"
-        	sh "sbt clean"
-        }
-        stage ('Compile') {
-        	sh "sbt compile"
-        }
-        stage ('Tests') {
-	        parallel 'static': {
-	            sh "echo 'shell scripts to run static tests...'"
-	        },
-	        'unit': {
-	            sh "echo 'shell scripts to run unit tests...'"
-	        },
-	        'integration': {
-	            sh "echo 'shell scripts to run integration tests...'"
-	        }
-        }
-      	stage ('Deploy') {
-            sh "echo 'shell scripts to deploy to server...'"
-      	}
-    } catch (err) {
-        currentBuild.result = 'FAILED'
-        throw err
-    }
+  def sbtHome = tool 'default-sbt'
+  //def SBT = "${sbtHome}/bin/sbt -Dsbt.log.noformat=true -Dsbt.override.build.repos=true"
+  def SBT = "${sbtHome}/bin/sbt -Dsbt.log.noformat=true"
+
+  def branch = env.BRANCH_NAME
+
+  echo "current branch is ${branch}"
+
+  // Mandatory, to maintain branch integrity
+  checkout scm
+
+  stage('Cleanup') {
+    sh "${SBT} clean"
+  }
+
+  stage('Compile') {
+    sh "${SBT} package"
+  }
+
 }
