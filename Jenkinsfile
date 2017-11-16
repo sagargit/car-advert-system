@@ -1,7 +1,6 @@
 node {
     try {
         stage ('Clean') {
-            sh "cd /home/prod-user/"
             sh "echo 'inside home directory now..............'"
             sh "ls -l"
             sh "cd car-advert-system"
