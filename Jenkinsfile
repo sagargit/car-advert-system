@@ -1,14 +1,24 @@
-node {
-    try {
+pipeline {
+        agent {
+            node {
+                label 'my-defined-label'
+                customWorkspace '/home/prod-user/car-advert-system'
+            }
+        }
+
         stage ('Clean') {
-            sh "cd /home/prod-user/"
-            sh "echo 'inside home directory............'"
-            sh "ls -l"
-            sh "cd car-advert-system"
-        	sh "sbt clean"
+            steps{
+                sh "ls -l"
+                sh "cd car-advert-system"
+                sh "sbt clean"
+            }
+
         }
         stage ('Compile') {
-        	sh "sbt compile"
+            steps{
+                sh "sbt compile"
+            }
+
         }
         stage ('Tests') {
 	        parallel 'static': {
@@ -24,8 +34,4 @@ node {
       	stage ('Deploy') {
             sh "echo 'shell scripts to deploy to server...'"
       	}
-    } catch (err) {
-        currentBuild.result = 'FAILED'
-        throw err
-    }
 }
