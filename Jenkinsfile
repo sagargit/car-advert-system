@@ -1,8 +1,10 @@
 node {
     try {
+
+        stage ('Build') {
+        deleteDir()
+        }
         stage ('Clean') {
-            sh "echo 'inside home directory now..............'"
-            sh "ls -l"
             sh "cd car-advert-system"
         	sh "sbt clean"
         }
