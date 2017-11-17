@@ -11,7 +11,7 @@ node {
                 sh "echo 'The workspace is: ${env.WORKSPACE}'"
                 if(env.BRANCH_NAME == 'master'){
                     sh "echo 'On branch master'"
-                    if (fileExists("target/universal/RUNNING_PID")) {
+                    if (fileExists("/target/universal/RUNNING_PID")) {
                         sh "echo 'running pid exists'"
                         sh "./stop.sh"
                     }
