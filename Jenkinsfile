@@ -13,7 +13,7 @@ node {
         stage ('Tests') {
 	        sh "echo 'scripts to test project...'"
         }
-        if(env.BRANCH_NAME == 'master'){
+        if(env.BRANCH_NAME == 'masterrr'){
            stage ('Deploy') {
                        sh "echo 'shell scripts to deploy to server....'"
                        sh "./start.sh"
