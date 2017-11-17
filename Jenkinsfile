@@ -8,7 +8,7 @@ node {
                             sh "echo '${workspace}'"
                             sh "echo '${exists}'"
                             if(exists){
-                                dir ('target/universal') {
+                                dir ('target/universal/') {
                                     sh "kill 'cat save_pid.txt'"
                                 }
                             }
