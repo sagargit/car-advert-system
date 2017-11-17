@@ -9,7 +9,7 @@ node {
                             sh "echo '${exists}'"
                             if(exists){
                                 dir ('target/universal') {
-                                    sh "kill save_pid.txt "
+                                    sh "kill 'cat save_pid.txt'"
                                 }
                             }
                         }
