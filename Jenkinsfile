@@ -3,6 +3,7 @@ node {
 
         stage ('Build') {
         deleteDir()
+        checkout scm
         }
         stage ('Clean') {
             sh "cd car-advert-system"
