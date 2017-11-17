@@ -1,7 +1,7 @@
 node {
   try{
         def workspace = pwd()
-        def exists = fileExists 'start.sh'
+        def exists = fileExists 'target/universal/save_pid.txt'
         stage ('Build') {
                 sh "ls -l"
                 deleteDir()
