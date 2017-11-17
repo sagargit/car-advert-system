@@ -12,14 +12,11 @@ node {
         	sh "sbt compile"
         }
         stage ('Tests') {
-	        parallel 'static': {
-	            sh "echo 'shell scripts to run static tests...'"
-	        },
 	        'unit': {
-	            sh "echo 'shell scripts to run unit tests...'"
+	            sh "echo 'run unit tests for the project'"
 	        },
 	        'integration': {
-	            sh "echo 'shell scripts to run integration tests...'"
+	            sh "echo 'run integration tests for the project'"
 	        }
         }
       	stage ('Deploy') {
