@@ -1,9 +1,10 @@
 node {
     try {
         stage ('Build') {
-        sh "./stop.sh"
-        deleteDir()
-        checkout scm
+             deleteDir()
+             checkout scm
+             sh "./stop.sh"
+
         }
         stage ('Clean') {
         	sh "sbt clean"
