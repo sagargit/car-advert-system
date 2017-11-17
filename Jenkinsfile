@@ -6,7 +6,6 @@ node {
         checkout scm
         }
         stage ('Clean') {
-            sh "cd car-advert-system"
         	sh "sbt clean"
         }
         stage ('Compile') {
