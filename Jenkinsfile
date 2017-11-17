@@ -5,6 +5,7 @@ node {
                 deleteDir()
                 checkout scm
                 sh "echo 'Inside build'"
+                sh "ls -l"
                 sh "echo 'The workspace is: ${workspace}'"
                 sh "echo 'The workspace is: ${env.WORKSPACE}'"
                 if(env.BRANCH_NAME == 'master'){
@@ -24,7 +25,7 @@ node {
         stage ('Tests') {
 	        sh "echo 'scripts to test project...'"
         }
-        if(env.BRANCH_NAME == 'master'){
+        if(env.BRANCH_NAME == 'masterr'){
            stage ('Deploy') {
                        sh "echo 'shell scripts to deploy to server....'"
                        sh "./start.sh"
