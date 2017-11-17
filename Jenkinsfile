@@ -1,5 +1,15 @@
 node {
+
+    def runningPidPath = "target/universal/RUNNING_PID"
+
+    def file = new File(runningPidPath)
+
     try {
+        if(env.BRANCH_NAME == 'master' && file.exists()){
+            stage ('Kill Nohup'){
+                    sh "./stop.sh"
+            }
+        }
         stage ('Build') {
              deleteDir()
              checkout scm
@@ -13,7 +23,7 @@ node {
         stage ('Tests') {
 	        sh "echo 'scripts to test project...'"
         }
-        if(env.BRANCH_NAME == 'masterrr'){
+        if(env.BRANCH_NAME == 'masterr'){
            stage ('Deploy') {
                        sh "echo 'shell scripts to deploy to server....'"
                        sh "./start.sh"
