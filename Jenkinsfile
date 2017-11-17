@@ -1,15 +1,13 @@
-def stopRunningProcess(String branch) {
-  if(branch == 'master'){
-    if (fileExists("target/universal/RUNNING_PID")) {
-        sh "./stop.sh"
-    }
-  }
-}
-
 node {
   try{
         stage ('Build') {
-             stopRunningProcess(env.BRANCH_NAME)
+            if(env.BRANCH_NAME == 'master'){
+                sh "echo 'On branch master'"
+                if (fileExists("target/universal/RUNNING_PID")) {
+                    sh "echo 'running pid exists'"
+                    sh "./stop.sh"
+                }
+              }
              deleteDir()
              checkout scm
         }
