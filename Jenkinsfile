@@ -1,10 +1,9 @@
 node {
     try {
         stage ('Build') {
+             sh "./stop.sh"
              deleteDir()
              checkout scm
-             sh "./stop.sh"
-
         }
         stage ('Clean') {
         	sh "sbt clean"
@@ -17,7 +16,7 @@ node {
         }
         if(env.BRANCH_NAME == 'master'){
            stage ('Deploy') {
-                       sh "echo 'shell scripts to deploy to server...'"
+                       sh "echo 'shell scripts to deploy to server....'"
                        sh "./start.sh"
                  	}
         }
