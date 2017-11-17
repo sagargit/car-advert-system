@@ -12,12 +12,7 @@ node {
         	sh "sbt compile"
         }
         stage ('Tests') {
-	        'unit': {
-	            sh "echo 'run unit tests for the project'"
-	        },
-	        'integration': {
-	            sh "echo 'run integration tests for the project'"
-	        }
+	        sh "echo 'scripts to test project...'"
         }
       	stage ('Deploy') {
             sh "echo 'shell scripts to deploy to server...'"
