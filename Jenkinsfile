@@ -1,7 +1,7 @@
 node {
   try{
         def workspace = pwd()
-        def exists = fileExists 'target/universal/save_pid.txt'
+        def exists = fileExists 'app/ApiGlobal.scala'
         stage ('Build') {
                 sh "ls -l"
                 deleteDir()
