@@ -9,7 +9,8 @@ node {
                 sh "echo 'Inside build'"
                 if(env.BRANCH_NAME == 'master'){
                     sh "echo 'On branch master'"
-                    sh "cd app"
+                    sh "cd app/"
+                    sh "ls -l"
                     sh "echo '${workspace}'"
                      sh "echo '${exists}'"
                     if (exists) {
