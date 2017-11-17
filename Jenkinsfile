@@ -7,14 +7,11 @@ node {
                 deleteDir()
                 checkout scm
                 sh "echo 'Inside build'"
-                sh "echo '${exists}'"
-
-                sh "echo 'The workspace is: ${workspace}'"
-                sh "echo 'The workspace is: ${env.WORKSPACE}'"
                 if(env.BRANCH_NAME == 'master'){
                     sh "echo 'On branch master'"
                     sh "cd app"
                     sh "echo '${workspace}'"
+                     sh "echo '${exists}'"
                     if (exists) {
                         sh "echo 'running pid exists'"
                         sh "./stop.sh"
