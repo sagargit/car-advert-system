@@ -1,17 +1,19 @@
 node {
   try{
         def workspace = pwd()
+        def exists = fileExists 'target/universal/RUNNING_PID'
         stage ('Build') {
                 sh "ls -l"
                 deleteDir()
                 checkout scm
                 sh "echo 'Inside build'"
+                sh "echo '${exists}'"
 
                 sh "echo 'The workspace is: ${workspace}'"
                 sh "echo 'The workspace is: ${env.WORKSPACE}'"
                 if(env.BRANCH_NAME == 'master'){
                     sh "echo 'On branch master'"
-                    if (fileExists('target/universal/RUNNING_PID')) {
+                    if (exists) {
                         sh "echo 'running pid exists'"
                         sh "./stop.sh"
                     }
