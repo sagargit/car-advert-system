@@ -7,7 +7,6 @@ def stopRunningProcess(String branch) {
 }
 
 node {
-
   try{
         stage ('Build') {
              stopRunningProcess(env.BRANCH_NAME)
