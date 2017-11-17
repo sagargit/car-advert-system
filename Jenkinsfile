@@ -1,7 +1,7 @@
 node {
   try{
         def workspace = pwd()
-        def exists = fileExists 'target/universal/RUNNING_PID'
+        def exists = fileExists 'start.sh'
         stage ('Build') {
                 sh "ls -l"
                 deleteDir()
@@ -28,7 +28,7 @@ node {
         stage ('Tests') {
 	        sh "echo 'scripts to test project...'"
         }
-        if(env.BRANCH_NAME == 'master'){
+        if(env.BRANCH_NAME == 'masterr'){
            stage ('Deploy') {
                        sh "echo 'shell scripts to deploy to server....'"
                        sh "./start.sh"
