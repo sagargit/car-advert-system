@@ -1,7 +1,7 @@
 node {
   try{
         def workspace = pwd()
-        def exists = fileExists 'ApiGlobal.scala'
+        def exists = fileExists 'target/'
         stage ('Build') {
                 sh "ls -l"
                 deleteDir()
@@ -9,16 +9,11 @@ node {
                 sh "echo 'Inside build'"
                 if(env.BRANCH_NAME == 'master'){
                     sh "echo 'On branch master'"
-                    sh "cd app/"
-                    sh "ls -l"
                     sh "echo '${workspace}'"
-                     sh "echo '${exists}'"
-                    if (exists) {
-                        sh "echo 'running pid exists'"
+                    sh "echo '${exists}'"
+                    dir ('target/universal/') {
+                        sh "ls -l"
                         sh "./stop.sh"
-                        sh "cd .."
-                    } else {
-                        sh "cd .."
                     }
                 }
         }
