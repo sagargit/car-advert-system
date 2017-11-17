@@ -18,6 +18,11 @@ import CarAdvertApiFormats._
 
 class Application @Inject()(baseEntity: BaseEntity) extends Controller with RequestParamParser {
 
+  def ack = Action.async{
+    implicit request =>
+      Future.successful(Ok("Server is up and running"))
+  }
+
   def createAdvert = Action.async(parse.json) {
     implicit request =>
       request.body.validate[AddCarAdvert].fold(
