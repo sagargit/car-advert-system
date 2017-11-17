@@ -1,19 +1,15 @@
 node {
   try{
-        def workspace = pwd()
         def exists = fileExists 'target/'
         stage ('Build') {
-                        if(env.BRANCH_NAME == 'master'){
-                            sh "echo 'On branch master'"
-                            sh "echo '${workspace}'"
-                            sh "echo '${exists}'"
-                            if(exists){
-                               sh "./stop.sh"
-                            }
-                        }
-                sh "ls -l"
-                deleteDir()
-                checkout scm
+           if(env.BRANCH_NAME == 'master'){
+              if(exists){
+                  sh "./stop.sh"
+              }
+           }
+
+           deleteDir()
+           checkout scm
         }
         stage ('Clean') {
         	sh "sbt clean"

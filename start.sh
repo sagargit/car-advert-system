@@ -1,7 +1,7 @@
 #!/bin/bash
 echo '-- Cleaning existing target --'
 rm -rf target/
-echo '-- Start Packaging Rew3-API --'
+echo '-- Start Packaging Car App --'
 sbt dist
 cd target/universal/
 echo '-- Unzipping distribution --'
