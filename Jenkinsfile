@@ -1,15 +1,19 @@
 node {
   try{
+        def workspace = pwd()
         stage ('Build') {
-            if(env.BRANCH_NAME == 'master'){
-                sh "echo 'On branch master'"
-                if (fileExists("target/universal/RUNNING_PID")) {
-                    sh "echo 'running pid exists'"
-                    sh "./stop.sh"
+                deleteDir()
+                checkout scm
+                sh "echo 'Inside build'"
+                sh "echo 'The workspace is: ${workspace}'"
+                sh "echo 'The workspace is: ${env.WORKSPACE}'"
+                if(env.BRANCH_NAME == 'master'){
+                    sh "echo 'On branch master'"
+                    if (fileExists("target/universal/RUNNING_PID")) {
+                        sh "echo 'running pid exists'"
+                        sh "./stop.sh"
+                    }
                 }
-              }
-             deleteDir()
-             checkout scm
         }
         stage ('Clean') {
         	sh "sbt clean"
