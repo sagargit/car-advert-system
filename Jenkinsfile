@@ -14,9 +14,12 @@ node {
         stage ('Tests') {
 	        sh "echo 'scripts to test project...'"
         }
-      	stage ('Deploy') {
-            sh "echo 'shell scripts to deploy to server...'"
-      	}
+        if(env.BRANCH_NAME == 'master'){
+           stage ('Deploy') {
+                       sh "echo 'shell scripts to deploy to server...'"
+                 	}
+        }
+
     } catch (err) {
         currentBuild.result = 'FAILED'
         throw err
