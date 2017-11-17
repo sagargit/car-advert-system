@@ -1,7 +1,6 @@
 node {
     try {
         stage ('Build') {
-             sh "./stop.sh"
              deleteDir()
              checkout scm
         }
