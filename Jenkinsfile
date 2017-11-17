@@ -1,12 +1,16 @@
+def stopRunningProcess(String branch) {
+  if(branch == 'master'){
+    if (fileExists("target/universal/RUNNING_PID")) {
+        sh "./stop.sh"
+    }
+  }
+}
+
 node {
 
-    try {
-       // if(env.BRANCH_NAME == 'master'){
-       //     stage ('Kill Nohup'){
-       //             sh "./stop.sh"
-       //     }
-       // }
+  try{
         stage ('Build') {
+             stopRunningProcess(env.BRANCH_NAME)
              deleteDir()
              checkout scm
         }
