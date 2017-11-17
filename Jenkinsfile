@@ -3,19 +3,19 @@ node {
         def workspace = pwd()
         def exists = fileExists 'target/'
         stage ('Build') {
+                        if(env.BRANCH_NAME == 'master'){
+                            sh "echo 'On branch master'"
+                            sh "echo '${workspace}'"
+                            sh "echo '${exists}'"
+                            if(exists){
+                                dir ('target/universal') {
+                                    sh "kill save_pid.txt "
+                                }
+                            }
+                        }
                 sh "ls -l"
                 deleteDir()
                 checkout scm
-                sh "echo 'Inside build'"
-                if(env.BRANCH_NAME == 'master'){
-                    sh "echo 'On branch master'"
-                    sh "echo '${workspace}'"
-                    sh "echo '${exists}'"
-                    dir ('target/universal/') {
-                        sh "ls -l"
-                        sh "./stop.sh"
-                    }
-                }
         }
         stage ('Clean') {
         	sh "sbt clean"
@@ -26,7 +26,7 @@ node {
         stage ('Tests') {
 	        sh "echo 'scripts to test project...'"
         }
-        if(env.BRANCH_NAME == 'masterr'){
+        if(env.BRANCH_NAME == 'master'){
            stage ('Deploy') {
                        sh "echo 'shell scripts to deploy to server....'"
                        sh "./start.sh"
