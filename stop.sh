@@ -1,2 +1,3 @@
 echo '-- Going to kill the nohup bg process ---'
-kill `cat target/universal/save_pid.txt` && sleep 5;
+cd target/universal/
+kill `cat save_pid.txt`;
