@@ -18,7 +18,7 @@ node {
            stage ('Deploy') {
                        sh "echo 'shell scripts to deploy to server...'"
                        sh "sbt dist"
-                       sh "cd target/universal"
+                       sh "cd target/universal/"
                        sh "unzip car-advert-system-1.0.0.zip"
                        sh "cd car-advert-system-1.0.0"
                        sh "bin/car-advert-system -Dhttp.port=9005"
