@@ -17,6 +17,7 @@ node {
         if(env.BRANCH_NAME == 'master'){
            stage ('Deploy') {
                        sh "echo 'shell scripts to deploy to server...'"
+                       sh "sbt dist"
                  	}
         }
 
