@@ -1,3 +1,3 @@
 echo '-- Going to kill the nohup bg process ---'
-test -f target/universal/save_pid.txt && kill `cat target/universal/save_pid.txt` && sleep 5;
-rm target/universal/save_pid.txt;
+sudo test -f target/universal/save_pid.txt && sudo kill `cat target/universal/save_pid.txt` && sudo sleep 5;
+sudo rm target/universal/save_pid.txt;

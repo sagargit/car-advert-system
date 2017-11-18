@@ -8,8 +8,7 @@ node {
                   sh "./stop.sh"
               }
            }
-
-           deleteDir()
+           sh "sudo rm -rf *"
            checkout scm
         }
         stage ('Clean') {
