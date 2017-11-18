@@ -8,5 +8,5 @@ echo '-- Unzipping distribution --'
 unzip car-advert-system-1.0.0 -d car-advert-system-1.0.0
 echo '-- Now staring application --'
 sudo chmod a+x car-advert-system-1.0.0/car-advert-system-1.0.0/bin/car-advert-system
-sudo nohup car-advert-system-1.0.0/car-advert-system-1.0.0/bin/car-advert-system -Dreload=true -J-server -J-Xmx2048m -J-Xmx2048M -Dhttp.port=9005 > $WORKSPACE/app.log 2>&1 & echo $! > save_pid.pid
+sudo nohup car-advert-system-1.0.0/car-advert-system-1.0.0/bin/car-advert-system -Dreload=true -J-server -J-Xmx2048m -J-Xmx2048M -Dhttp.port=9005 > $WORKSPACE/app.log 2>&1 & echo $! > $WORKSPACE/save_pid.pid
 echo '-- Car advert system has been started successfully----'
