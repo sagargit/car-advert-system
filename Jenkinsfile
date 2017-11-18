@@ -4,7 +4,7 @@ node {
         stage ('Build') {
            if(env.BRANCH_NAME == 'master'){
               if(exists){
-                  sudo chmod a+x stop.sh
+                  sh "sudo chmod a+x stop.sh"
                   sh "./stop.sh"
               }
            }
@@ -23,7 +23,7 @@ node {
         if(env.BRANCH_NAME == 'master'){
            stage ('Deploy') {
                        sh "echo 'shell scripts to deploy to server....'"
-                       sudo chmod a+x start.sh
+                       sh "sudo chmod a+x start.sh"
                        sh "./start.sh"
                  	}
         }
